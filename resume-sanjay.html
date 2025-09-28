@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="i18n-title-tag">Sanjay Kareer | Professional Journalist & Editor</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        /* Style for active navigation links */
+        .nav-link.active {
+            @apply border-indigo-500 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400 font-semibold;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <div class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- Fixed Utility Bar (Language & Theme Toggle) -->
+        <div class="fixed top-4 right-4 flex space-x-2 z-50">
+             <!-- Language Toggle Button (Cross-link) -->
+            <button id="lang-toggle" class="p-2 rounded-lg bg-indigo-500 text-white shadow-lg transition-colors duration-300 z-50 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <!-- Text will be set by JS: "हिंदी में देखें" or "View in English" -->
+            </button>
+            
+            <!-- Dark Mode Toggle -->
+            <button id="theme-toggle" class="p-2 rounded-full bg-white dark:bg-gray-700 shadow-lg transition-colors duration-300 z-50 hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600">
+                <svg id="theme-icon" class="w-6 h-6 text-gray-800 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                </svg>
+            </button>
+        </div>
+
+        <!-- HEADER / NAVIGATION SECTION -->
+        <header class="bg-white dark:bg-gray-800 rounded-xl shadow-xl mb-6 sticky top-0 z-40">
+            <div class="p-6 text-center">
+                <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-1" id="i18n-name">Sanjay Kareer</h1>
+                <p class="text-lg font-medium text-indigo-600 dark:text-indigo-400" id="i18n-designation"></p>
+                <div class="mt-2 flex justify-center space-x-4 text-sm">
+                    <a href="mailto:s.kareer@gmail.com" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        s.k*****@gmail.com
+                    </a>
+                    <span class="text-gray-600 dark:text-gray-300 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.44 5.44l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.717 21 3 14.283 3 6V5z"></path></svg>
+                       <span id="i18n-mobile-numbers">+91 94*** 3***1</span>
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="border-t border-gray-100 dark:border-gray-700">
+                <ul id="nav-links" class="flex justify-center flex-wrap space-x-2 sm:space-x-8 text-sm sm:text-base py-3">
+                    <!-- Nav links populated by JS -->
+                </ul>
+            </nav>
+        </header>
+
+        <!-- MAIN CONTENT AREA (PAGES) -->
+        <main class="space-y-8 min-h-[500px]">
+
+            <!-- 1. HOME / SUMMARY PAGE (Initially visible) -->
+            <section id="page-home" class="hidden">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-6 flex items-center">
+                        <svg class="w-7 h-7 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-5m-7-2l.555.555a2 2 0 002.828 0L21 7M15 4h-5a2 2 0 00-2 2v10a2 2 0 002 2h5a2 2 0 002-2V6a2 2 0 00-2-2z"></path></svg>
+                        <span id="i18n-summary-title">Professional Summary</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed" id="i18n-summary-text"></p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg mt-8">
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <span id="i18n-achievements-title-home">Key Achievements</span>
+                    </h3>
+                     <ul id="i18n-achievements-list-home" class="mt-4 list-disc ml-5 space-y-2 text-gray-600 dark:text-gray-300">
+                        <!-- List items will be dynamically generated here -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 2. EXPERIENCE PAGE -->
+            <section id="page-experience" class="hidden">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-8 flex items-center">
+                        <svg class="w-7 h-7 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.25l-2.25 2.25M17 19.25l-2.25 2.25M10 21.25H4a2 2 0 01-2-2V5.75a2 2 0 012-2h12.5a2 2 0 012 2v5.5a2 2 0 01-2 2h-6.5zm-5 0v-4.5h4.5v4.5H5z"></path></svg>
+                        <span id="i18n-experience-title">Work Experience</span>
+                    </h2>
+                    <div id="i18n-experience-list">
+                        <!-- Experience entries will be dynamically generated here -->
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 3. SKILLS & EDUCATION PAGE -->
+            <section id="page-skills" class="hidden">
+                
+                <!-- Skills Section -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg mb-8">
+                    <h2 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-6 flex items-center">
+                        <svg class="w-7 h-7 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.748 2.523-1.748 2.95 0l1.246 3.654a1 1 0 00.95.69h3.83a1 1 0 01.912 1.405l-3.078 2.253a1 1 0 00-.36 1.118l1.246 3.654c.426 1.748-1.405 2.87-2.88 1.933l-3.078-2.253a1 1 0 00-1.16 0l-3.078 2.253c-1.475.937-3.306-.185-2.88-1.933l1.246-3.654a1 1 0 00-.36-1.118L2.71 10.066a1 1 0 01.912-1.405h3.83a1 1 0 00.95-.69l1.246-3.654z"></path></svg>
+                        <span id="i18n-skills-title">Technical & Editorial Skills</span>
+                    </h2>
+                    <div id="i18n-skill-tags" class="flex flex-wrap gap-3 mb-6">
+                        <!-- Skill tags will be dynamically generated here -->
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold dark:text-white mt-8 mb-4 border-t pt-4 border-gray-200 dark:border-gray-700" id="i18n-publications-heading">Key Publications</h3>
+                    <div id="i18n-publication-tags" class="flex flex-wrap gap-3">
+                        <!-- Publication tags will be dynamically generated here -->
+                    </div>
+                </div>
+                
+                <!-- Education Section -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-6 flex items-center">
+                        <svg class="w-7 h-7 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v4M9 14h6"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 18h6"></path></svg>
+                        <span id="i18n-education-title">Education & Languages</span>
+                    </h2>
+                    
+                    <div id="i18n-education-content" class="mb-8 border-l-4 border-indigo-500 pl-4">
+                        <!-- Education details will be dynamically generated here -->
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold dark:text-white mt-8 mb-4 border-t pt-4 border-gray-200 dark:border-gray-700" id="i18n-languages-heading">Languages Known</h3>
+                     <div id="i18n-language-tags" class="flex flex-wrap gap-3">
+                        <!-- Language tags will be dynamically generated here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="text-center py-6 text-sm text-gray-500 dark:text-gray-400 mt-12">
+            <p id="i18n-references"></p>
+            <p id="i18n-footer">&copy; 2025 Sanjay Kareer. Built with Gemini.</p>
+        </footer>
+
+    </div>
+
+    <!-- Custom CSS for Skill Tags -->
+    <style>
+        .tag {
+            @apply bg-indigo-100 dark:bg-indigo-800 text-indigo-800 dark:text-indigo-200 text-sm font-medium px-4 py-1 rounded-full shadow-md transition-transform transform hover:scale-105;
+        }
+        .publication-tag {
+             @apply bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200;
+        }
+    </style>
+
+    <!-- JavaScript for Routing, Dark Mode, and Content Switching -->
+    <script>
+        // Default state
+        let currentLang = 'en';
+        const pages = ['home', 'experience', 'skills'];
+
+        // --- BILINGUAL CONTENT DATA ---
+        const contentData = {
+            en: {
+                // Navigation and Global
+                appTitle: "Sanjay Kareer | Professional Journalist & Editor",
+                designation: "Senior Journalist & Editor | 33 Years in Hindi Media",
+                mobileNumbers: "+91 9***5 3***1, +91 8***5 9***5",
+                references: "References will be available on demand.",
+                footer: "&copy; 2025 Sanjay Kareer. Built with Gemini.",
+                toggleText: "हिंदी में देखें",
+                
+                nav: [
+                    { id: 'home', text: 'Summary' },
+                    { id: 'experience', text: 'Work Experience' },
+                    { id: 'skills', text: 'Skills & Education' }
+                ],
+
+                // 1. HOME PAGE CONTENT
+                home: {
+                    summaryTitle: "Professional Summary",
+                    summaryText: "Highly experienced Professional Journalist and Editor with over 33 years of experience in Hindi print and digital media since 1992. Proven expertise in field reporting, news editing, desk management (City/Central Desk In-Charge), and content creation for major publications like Dainik Bhaskar and Rajasthan Patrika. Skilled in adapting to new media, digital publishing (WordPress), and leveraging AI tools for advanced journalism. Seeking a challenging role to contribute effectively through extensive skills and experience.",
+                    achievementsTitle: "Key Achievements",
+                    achievementsList: [
+                        "Recipient of several awards and honors for specialized reporting, particularly in sports journalism.",
+                        "Nominated as Vice President of MP Sports Journalist and Writers Association for 3 years.",
+                        "Vast experience in live coverage of major events: Public Meetings, Agitation, Sports Events, and Mass Gatherings."
+                    ]
+                },
+
+                // 2. EXPERIENCE PAGE CONTENT
+                experience: {
+                    title: "Work Experience",
+                    list: [
+                        { title: "Content Writer and Editor (City Desk In-Charge)", company: "Rajasthan Patrika | Bengaluru, KA", duration: "Jan 2015 – April 2025", details: [
+                            "Managed Bengaluru City Desk: edited news, assigned stories to reporters, and coordinated with regional desks.",
+                            "Responsible for news writing, development, editing, and publishing for print newspaper, online portal, and Patrika TV.",
+                            "Created new story ideas and special pages for city desk coverage."
+                        ]},
+                        { title: "Editor (Digital Media)", company: "Daily Hindi News (Online Newspaper) | Sagar, MP", duration: "Jun 2007 – Dec 2014", details: [
+                            "Edited all content (News, features, reports) for the first regional news website of Bundelkhand.",
+                            "Managed the editorial and technical maintenance of the website, including digital marketing responsibilities."
+                        ]},
+                        { title: "Central Desk In-Charge & City Desk In-Charge", company: "Dainik Bhaskar | Udaipur, RJ & Sagar, MP", duration: "Dec 2004 – Jun 2009", details: [
+                            "Led teams and managed Central Desk for editing front-page special news and planning routine pages.",
+                            "Handled late-night coverage (stop press) and divisional news coordination across multiple district bureaus.",
+                            "Managed the City Desk, assigning and editing stories for a team of 6-8 reporters."
+                        ]},
+                        { title: "Editorial In-Charge, Sports Editor & Feature Editor", company: "Dainik Aacharan, Dainik Yayarth & others", duration: "Mar 1993 – Nov 2004", details: [
+                            "Developed a distinct identity for the Sports Page, managed editorial pages and weekly feature supplements.",
+                            "Extensive experience in News Editing, Feature Editing, and special correspondent roles."
+                        ]}
+                    ]
+                },
+
+                // 3. SKILLS & EDUCATION PAGE CONTENT
+                skills: {
+                    skillsTitle: "Technical & Editorial Skills",
+                    publicationsHeading: "Key Publications",
+                    educationTitle: "Education & Languages",
+                    languagesHeading: "Languages Known",
+                    
+                    skillTags: ["Hindi Journalism", "Editorial Leadership", "News Editing (Print & Digital)", "Content Creation", "WordPress CMS", "AI Tools & Prompting", "Quark Express / Page Maker", "Photoshop / Gimp (Photo Editing)", "Basic Video Editing", "MS Word"],
+                    publicationTags: ["Dainik Bhaskar", "Divy Bhaskar", "Rajasthan Patrika", "Nai Dunia", "Janasatta", "Khel Halchal", "People's Samachar", "Sarthak Samvad"],
+                    languageTags: [
+                        { lang: "Hindi", proficiency: "Proficient (First Language)" },
+                        { lang: "English", proficiency: "Good Working Knowledge" },
+                        { lang: "Punjabi", proficiency: "Mother Tongue" }
+                    ],
+                    education: {
+                        degree: "Bachelor of Commerce (B.Com.)",
+                        institution: "Indira Gandhi National Open University (IGNOU)",
+                        grade: "Grade 'B' (62.97%)",
+                        details: "Included elective courses: Writing for Radio, Feature Writing (Journalism related)."
+                    }
+                }
+            },
+            
+            hi: {
+                // Navigation and Global
+                appTitle: "संजय करीर | पेशेवर पत्रकार एवं संपादक",
+                designation: "वरिष्ठ पत्रकार एवं संपादक | हिंदी मीडिया में 33 वर्ष का अनुभव",
+                mobileNumbers: "+91 9***5 3***1, +91 8***5 9***5",
+                references: "संदर्भ (References) मांग पर उपलब्ध कराए जाएंगे।",
+                footer: "&copy; 2025 संजय करीर। Gemini द्वारा निर्मित।",
+                toggleText: "View in English",
+
+                nav: [
+                    { id: 'home', text: 'सारांश' },
+                    { id: 'experience', text: 'कार्य अनुभव' },
+                    { id: 'skills', text: 'कौशल एवं शिक्षा' }
+                ],
+
+                // 1. HOME PAGE CONTENT
+                home: {
+                    summaryTitle: "व्यावसायिक सारांश",
+                    summaryText: "एक पेशेवर पत्रकार और संपादक के रूप में 33 वर्षों का अत्यधिक अनुभवी करियर, जिसमें 1992 से हिंदी प्रिंट और डिजिटल मीडिया शामिल है। फील्ड रिपोर्टिंग, समाचार संपादन, डेस्क प्रबंधन (सिटी/सेंट्रल डेस्क इंचार्ज), और **दैनिक भास्कर** व **राजस्थान पत्रिका** जैसे प्रमुख प्रकाशनों के लिए कंटेंट निर्माण में विशेषज्ञता। नए मीडिया, डिजिटल प्रकाशन (वर्डप्रेस), और उन्नत पत्रकारिता के लिए AI टूल्स का उपयोग करने में कुशल। अपने व्यापक कौशल और अनुभव के माध्यम से प्रभावी ढंग से योगदान देने के लिए चुनौतीपूर्ण भूमिका की तलाश में।",
+                    achievementsTitle: "प्रमुख उपलब्धियाँ",
+                    achievementsList: [
+                        "विशेषज्ञ रिपोर्टिंग, विशेष रूप से खेल पत्रकारिता में अनेक बार पुरस्कार व सम्मान अर्जित किए।",
+                        "मप्र खेल पत्रकार एवं लेखक संघ के उपाध्यक्ष के रूप में 3 वर्षों तक मनोनयन।",
+                        "सार्वजनिक बैठकों, आंदोलनों, खेल आयोजनों और जनसभाओं जैसे प्रमुख आयोजनों की लाइव कवरेज में विशाल अनुभव।"
+                    ]
+                },
+
+                // 2. EXPERIENCE PAGE CONTENT
+                experience: {
+                    title: "कार्य अनुभव",
+                    list: [
+                         { title: "कंटेंट राइटर और संपादक (सिटी डेस्क इंचार्ज)", company: "राजस्थान पत्रिका | बेंगलुरु, कर्नाटक", duration: "जनवरी 2015 – अप्रैल 2025", details: [
+                            "बेंगलुरु सिटी डेस्क का प्रबंधन: समाचारों का संपादन, रिपोर्टरों को स्टोरी सौंपना, और क्षेत्रीय डेस्क के साथ समन्वय।",
+                            "प्रिंट समाचार पत्र, ऑनलाइन पोर्टल और पत्रिका टीवी के लिए समाचार लेखन, विकास, संपादन और प्रकाशन की जिम्मेदारी।",
+                            "सिटी डेस्क कवरेज के लिए नई स्टोरी आइडिया और विशेष पेज बनाना।"
+                        ]},
+                        { title: "संपादक (डिजिटल मीडिया)", company: "डेली हिंदी न्यूज़ (ऑनलाइन समाचार पत्र) | सागर, म.प्र.", duration: "जून 2007 – दिसंबर 2014", details: [
+                            "बुंदेलखंड की पहली क्षेत्रीय समाचार वेबसाइट के लिए सभी कंटेंट (समाचार, फीचर, रिपोर्ट) का संपादन।",
+                            "वेबसाइट के संपादकीय और तकनीकी रखरखाव का प्रबंधन, जिसमें डिजिटल मार्केटिंग जिम्मेदारियां शामिल थीं।"
+                        ]},
+                        { title: "सेंट्रल डेस्क इंचार्ज और सिटी डेस्क इंचार्ज", company: "दैनिक भास्कर | उदयपुर, राज. और सागर, म.प्र.", duration: "दिसंबर 2004 – जून 2009", details: [
+                            "टीमें लीड की और फ्रंट-पेज स्पेशल न्यूज़ के संपादन और रूटीन पेज प्लानिंग के लिए सेंट्रल डेस्क का प्रबंधन किया।",
+                            "लेट-नाइट कवरेज (स्टॉप प्रेस) और कई जिला ब्यूरो में संभागीय समाचार समन्वय संभाला।",
+                            "सिटी डेस्क का प्रबंधन किया, 6-8 रिपोर्टरों की टीम के लिए कहानियाँ सौंपना और संपादन करना।"
+                        ]},
+                        { title: "संपादकीय इंचार्ज, स्पोर्ट्स एडिटर और फीचर एडिटर", company: "दैनिक आचरण, दैनिक यथार्थ और अन्य", duration: "मार्च 1993 – नवंबर 2004", details: [
+                            "स्पोर्ट्स पेज के लिए एक विशिष्ट पहचान विकसित की, संपादकीय पेज और साप्ताहिक फीचर सप्लीमेंट्स का प्रबंधन किया।",
+                            "समाचार संपादन, फीचर संपादन और विशेष संवाददाता भूमिकाओं में व्यापक अनुभव।"
+                        ]}
+                    ]
+                },
+
+                // 3. SKILLS & EDUCATION PAGE CONTENT
+                skills: {
+                    skillsTitle: "तकनीकी एवं संपादकीय कौशल",
+                    publicationsHeading: "प्रमुख प्रकाशन",
+                    educationTitle: "शिक्षा एवं भाषाएँ",
+                    languagesHeading: "ज्ञात भाषाएँ",
+
+                    skillTags: ["हिंदी पत्रकारिता", "संपादकीय नेतृत्व", "समाचार संपादन (प्रिंट और डिजिटल)", "कंटेंट निर्माण", "वर्डप्रेस CMS", "AI टूल्स और प्रॉम्प्टिंग", "क्वार्क एक्सप्रेस / पेज मेकर", "फोटोशॉप / जिम्प (फोटो संपादन)", "बेसिक वीडियो एडिटिंग", "MS वर्ड"],
+                    publicationTags: ["दैनिक भास्कर", "दिव्य भास्कर", "राजस्थान पत्रिका", "नई दुनिया", "जनसत्ता", "खेल हलचल", "पीपुल्स समाचार", "सार्थक संवाद"],
+                    languageTags: [
+                        { lang: "हिंदी", proficiency: "पारंगत (प्रथम भाषा)" },
+                        { lang: "अंग्रेजी", proficiency: "अच्छा कार्य ज्ञान" },
+                        { lang: "पंजाबी", proficiency: "मातृभाषा" }
+                    ],
+                    education: {
+                        degree: "बैचलर ऑफ कॉमर्स (B.Com.)",
+                        institution: "इंदिरा गांधी राष्ट्रीय मुक्त विश्वविद्यालय (IGNOU)",
+                        grade: "ग्रेड 'बी' (62.97%)",
+                        details: "चुनिंदा पाठ्यक्रम शामिल: रेडियो लेखन, फीचर लेखन (पत्रकारिता संबंधी)।"
+                    }
+                }
+            }
+        };
+
+        // --- CORE RENDERING & ROUTING FUNCTIONS ---
+        
+        // Renders the list of navigation links
+        function renderNavigation(lang) {
+            const navLinksContainer = document.getElementById('nav-links');
+            navLinksContainer.innerHTML = '';
+            const navData = contentData[lang].nav;
+            
+            navData.forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#${item.id}`;
+                a.className = 'nav-link cursor-pointer border-b-2 border-transparent px-2 py-1 hover:border-indigo-500 transition-colors duration-200';
+                a.textContent = item.text;
+                a.dataset.page = item.id;
+                
+                // Add click handler for navigation
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigate(item.id, currentLang);
+                });
+
+                li.appendChild(a);
+                navLinksContainer.appendChild(li);
+            });
+        }
+        
+        // Renders the Experience section content
+        function renderExperience(lang) {
+            const listContainer = document.getElementById('i18n-experience-list');
+            listContainer.innerHTML = '';
+            const data = contentData[lang].experience.list;
+            
+            data.forEach((job, index) => {
+                const jobDiv = document.createElement('div');
+                // Use margin classes for spacing
+                jobDiv.className = `p-4 border-l-4 border-indigo-500 shadow-md rounded-r-lg mb-8 bg-gray-50 dark:bg-gray-700`;
+                
+                let detailsHtml = job.details.map(d => `<li class="text-gray-600 dark:text-gray-300">${d}</li>`).join('');
+
+                jobDiv.innerHTML = `
+                    <h3 class="text-xl font-bold dark:text-white">${job.title}</h3>
+                    <p class="text-indigo-600 dark:text-indigo-400 font-medium">${job.company}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">${job.duration}</p>
+                    <ul class="list-disc ml-5 space-y-2">
+                        ${detailsHtml}
+                    </ul>
+                `;
+                listContainer.appendChild(jobDiv);
+            });
+        }
+        
+        // Renders tags (Skills, Publications)
+        function renderTags(elementId, tags, className) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = tags.map(tag => `<span class="${className}">${tag}</span>`).join('');
+        }
+        
+        // Renders Language tags
+        function renderLanguageTags(elementId, languageData) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = languageData.map(item => `<span class="tag">${item.lang} (${item.proficiency})</span>`).join('');
+        }
+
+        // Renders Education content
+        function renderEducation(lang) {
+            const container = document.getElementById('i18n-education-content');
+            const edu = contentData[lang].skills.education;
+            container.innerHTML = `
+                <h3 class="text-xl font-semibold dark:text-white">${edu.degree}</h3>
+                <p class="text-indigo-600 dark:text-indigo-400">${edu.institution}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">${edu.grade}</p>
+                <p class="text-sm text-gray-600 dark:text-gray-300">${edu.details}</p>
+            `;
+        }
+        
+        // Renders Home page content
+        function renderHome(lang) {
+            const data = contentData[lang].home;
+            
+            document.getElementById('i18n-summary-title').textContent = data.summaryTitle;
+            document.getElementById('i18n-summary-text').textContent = data.summaryText;
+            document.getElementById('i18n-achievements-title-home').textContent = data.achievementsTitle;
+            
+            const list = document.getElementById('i18n-achievements-list-home');
+            list.innerHTML = data.achievementsList.map(item => 
+                `<li class="text-gray-600 dark:text-gray-300">${item}</li>`
+            ).join('');
+        }
+        
+        // Renders Skills page content
+        function renderSkills(lang) {
+            const data = contentData[lang].skills;
+
+            document.getElementById('i18n-skills-title').textContent = data.skillsTitle;
+            document.getElementById('i18n-publications-heading').textContent = data.publicationsHeading;
+            document.getElementById('i18n-education-title').textContent = data.educationTitle;
+            document.getElementById('i18n-languages-heading').textContent = data.languagesHeading;
+            
+            renderTags('i18n-skill-tags', data.skillTags, 'tag');
+            renderTags('i18n-publication-tags', data.publicationTags, 'publication-tag');
+            renderLanguageTags('i18n-language-tags', data.languageTags);
+            renderEducation(lang);
+        }
+
+        // Main function to update all content for the current language
+        function updateContent(lang) {
+            const globalData = contentData[lang];
+            
+            // Global text updates
+            document.getElementById('i18n-title-tag').textContent = globalData.appTitle;
+            document.getElementById('i18n-designation').textContent = globalData.designation;
+            document.getElementById('i18n-mobile-numbers').textContent = globalData.mobileNumbers;
+            document.getElementById('i18n-references').textContent = globalData.references;
+            document.getElementById('i18n-footer').innerHTML = globalData.footer;
+            document.getElementById('lang-toggle').textContent = globalData.toggleText;
+            
+            // Experience page title (used by both EN and HI)
+            document.getElementById('i18n-experience-title').textContent = globalData.experience.title;
+
+            // Render Nav
+            renderNavigation(lang);
+            
+            // Render Page Content (All pages need to be updated even if not currently visible)
+            renderHome(lang);
+            renderExperience(lang);
+            renderSkills(lang);
+            
+            // Update HMTL lang attribute for accessibility/SEO
+            document.documentElement.lang = lang;
+            currentLang = lang;
+        }
+        
+        // Hides all pages and shows the requested one
+        function navigate(pageId, lang, initialLoad = false) {
+            if (!pages.includes(pageId)) {
+                pageId = 'home'; // Fallback to home
+            }
+            
+            // 1. If language changed, update all content first
+            if (lang !== currentLang) {
+                updateContent(lang);
+            }
+
+            // 2. Hide all pages
+            pages.forEach(p => {
+                document.getElementById(`page-${p}`).classList.add('hidden');
+            });
+            
+            // 3. Show the requested page
+            document.getElementById(`page-${pageId}`).classList.remove('hidden');
+
+            // 4. Update the URL hash and active navigation link
+            if (!initialLoad) {
+                window.location.hash = pageId;
+            }
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top for a fresh view
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // --- DARK MODE LOGIC ---
+        function getThemePreference() {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                return 'dark';
+            }
+            return 'light';
+        }
+
+        function setTheme(theme) {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            
+            if (theme === 'dark') {
+                body.classList.add('dark');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>'; 
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // --- INITIALIZATION ---
+        window.onload = function() {
+            // 1. Initialize theme
+            setTheme(getThemePreference());
+
+            // 2. Determine initial state
+            let initialLang = localStorage.getItem('appLang') || 'en';
+            let initialPage = window.location.hash.substring(1) || 'home';
+            
+            // 3. Render content and navigate to the correct page
+            updateContent(initialLang);
+            navigate(initialPage, initialLang, true); // initialLoad = true so it doesn't change hash unnecessarily
+
+            // 4. Attach Event Listeners
+            document.getElementById('theme-toggle').addEventListener('click', function() {
+                const currentTheme = getThemePreference();
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+            });
+
+            // Language Toggle Listener
+            document.getElementById('lang-toggle').addEventListener('click', function() {
+                const newLang = currentLang === 'en' ? 'hi' : 'en';
+                localStorage.setItem('appLang', newLang);
+                // When switching language, always go back to the 'home' page of that language
+                navigate('home', newLang); 
+            });
+            
+            // Handle browser back/forward buttons
+            window.addEventListener('hashchange', () => {
+                const newPage = window.location.hash.substring(1) || 'home';
+                navigate(newPage, currentLang, true);
+            });
+        };
+    </script>
+
+</body>
+</html>
